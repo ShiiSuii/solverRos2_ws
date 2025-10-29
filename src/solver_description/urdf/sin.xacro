@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<robot name="(Sin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find (Sin_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find (Sin_description)/urdf/(Sin.trans" />
+<xacro:include filename="$(find (Sin_description)/urdf/(Sin.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.20250000000000004 0.0380842513185862 0.15249999999999994" rpy="0 0 0"/>
+    <mass value="21.492746647635013"/>
+    <inertia ixx="0.316201" iyy="0.772689" izz="0.482937" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="1.1296519275560968e-14 3.469446951953614e-18 0.025500000000000016" rpy="0 0 0"/>
+    <mass value="4.902384911419855"/>
+    <inertia ixx="0.008055" iyy="0.008055" izz="0.014592" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0385 -0.0295 0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0385 -0.0295 0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel__1__1">
+  <inertial>
+    <origin xyz="1.1213252548714081e-14 3.469446951953614e-18 0.02549999999999994" rpy="0 0 0"/>
+    <mass value="4.902384911419855"/>
+    <inertia ixx="0.008055" iyy="0.008055" izz="0.014592" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.3665 -0.0295 0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/left_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.3665 -0.0295 0.067" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/left_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rigth_wheel_1">
+  <inertial>
+    <origin xyz="1.1379786002407855e-14 -6.938893903907228e-18 -0.025500000000000078" rpy="0 0 0"/>
+    <mass value="4.902384911419855"/>
+    <inertia ixx="0.008055" iyy="0.008055" izz="0.014592" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.3665 -0.0295 -0.372" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/rigth_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.3665 -0.0295 -0.372" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/rigth_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rigth_wheel__1__1">
+  <inertial>
+    <origin xyz="-1.128958038165706e-14 -4.85722573273506e-17 -0.025499999999999967" rpy="0 0 0"/>
+    <mass value="4.902384911419855"/>
+    <inertia ixx="0.008055" iyy="0.008055" izz="0.014592" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0385 -0.0295 -0.372" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/rigth_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0385 -0.0295 -0.372" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://(Sin_description/meshes/rigth_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rígida 1" type="fixed">
+  <origin xyz="0.0385 0.0295 -0.067" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+</joint>
+
+<joint name="Rígida 2" type="fixed">
+  <origin xyz="0.3665 0.0295 -0.067" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel__1__1"/>
+</joint>
+
+<joint name="Rígida 3" type="fixed">
+  <origin xyz="0.3665 0.0295 0.372" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="rigth_wheel_1"/>
+</joint>
+
+<joint name="Rígida 4" type="fixed">
+  <origin xyz="0.0385 0.0295 0.372" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="rigth_wheel__1__1"/>
+</joint>
+
+</robot>

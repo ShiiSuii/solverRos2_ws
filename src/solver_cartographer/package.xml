@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>solver_cartographer</name>
+  <version>0.0.1</version>
+  <description>Cartographer integration for Solver robot</description>
+  <maintainer email="atwork@example.com">atwork</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>cartographer_ros</depend>
+  <depend>rclcpp</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

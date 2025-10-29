@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<robot name="solverbot">
+
+  <!-- Material -->
+  <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.000"/>
+  </material>
+
+  <!-- Gazebo plugins y materiales -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="control"/>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Silver</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <gazebo reference="left_wheel_1">
+    <material>Gazebo/Silver</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="left_wheel__1__1">
+    <material>Gazebo/Silver</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="rigth_wheel_1">
+    <material>Gazebo/Silver</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="rigth_wheel__1__1">
+    <material>Gazebo/Silver</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <!-- Base principal -->
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.2025 0.0381 0.1525"/>
+      <mass value="21.4927"/>
+      <inertia ixx="0.3162" ixy="0" ixz="0" iyy="0.7727" iyz="0" izz="0.4829"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Ruedas izquierda -->
+  <link name="left_wheel_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0385 -0.0295 0.067"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <link name="left_wheel__1__1">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.3665 -0.0295 0.067"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/left_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <!-- Ruedas derecha -->
+  <link name="rigth_wheel_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.3665 -0.0295 -0.372"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/rigth_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <link name="rigth_wheel__1__1">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0385 -0.0295 -0.372"/>
+      <geometry>
+        <mesh filename="package://solver_description/meshes/rigth_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <!-- Juntas fijas -->
+  <joint name="rigid_1" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0385 0.0295 -0.067"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_1"/>
+  </joint>
+
+  <joint name="rigid_2" type="fixed">
+    <origin rpy="0 0 0" xyz="0.3665 0.0295 -0.067"/>
+    <parent link="base_link"/>
+    <child link="left_wheel__1__1"/>
+  </joint>
+
+  <joint name="rigid_3" type="fixed">
+    <origin rpy="0 0 0" xyz="0.3665 0.0295 0.372"/>
+    <parent link="base_link"/>
+    <child link="rigth_wheel_1"/>
+  </joint>
+
+  <joint name="rigid_4" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0385 0.0295 0.372"/>
+    <parent link="base_link"/>
+    <child link="rigth_wheel__1__1"/>
+  </joint>
+
+</robot>

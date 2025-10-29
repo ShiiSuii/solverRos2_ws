@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<robot name="solverbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Includes locales (sin usar __file__) -->
+  <xacro:include filename="materials.xacro" />
+  <xacro:include filename="sin.trans" />
+  <xacro:include filename="sin.gazebo" />
+
+  <!-- Base principal -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.2025 0.0381 0.1525" rpy="0 0 0"/>
+      <mass value="21.4927"/>
+      <inertia ixx="0.3162" iyy="0.7727" izz="0.4829" ixy="0" iyz="0" ixz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Ruedas izquierda -->
+  <link name="left_wheel_1">
+    <visual>
+      <origin xyz="-0.0385 -0.0295 0.067" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <link name="left_wheel__1__1">
+    <visual>
+      <origin xyz="-0.3665 -0.0295 0.067" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/left_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <!-- Ruedas derecha -->
+  <link name="rigth_wheel_1">
+    <visual>
+      <origin xyz="-0.3665 -0.0295 -0.372" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/rigth_wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <link name="rigth_wheel__1__1">
+    <visual>
+      <origin xyz="-0.0385 -0.0295 -0.372" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/rigth_wheel__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <!-- Juntas fijas -->
+  <joint name="rigid_1" type="fixed">
+    <origin xyz="0.0385 0.0295 -0.067" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_1"/>
+  </joint>
+
+  <joint name="rigid_2" type="fixed">
+    <origin xyz="0.3665 0.0295 -0.067" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel__1__1"/>
+  </joint>
+
+  <joint name="rigid_3" type="fixed">
+    <origin xyz="0.3665 0.0295 0.372" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="rigth_wheel_1"/>
+  </joint>
+
+  <joint name="rigid_4" type="fixed">
+    <origin xyz="0.0385 0.0295 0.372" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="rigth_wheel__1__1"/>
+  </joint>
+
+</robot>
+

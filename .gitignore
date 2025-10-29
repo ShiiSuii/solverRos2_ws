@@ -1,0 +1,21 @@
+# ROS2 build and install folders
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VSCode, JetBrains, etc.
+.vscode/
+.idea/
+
+# Map data and temporary files
+*.pgm
+*.yaml
+*.db
+
+# RViz and launch logs
+*.rviz
+*.launch.py~

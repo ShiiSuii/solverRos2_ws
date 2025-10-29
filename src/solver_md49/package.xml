@@ -1,0 +1,18 @@
+<package format="3">
+  <name>solver_md49</name>
+  <version>0.0.1</version>
+  <description>Python MD49 motor controller node</description>
+  <maintainer email="atwork@example.com">atwork</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>python3-serial</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>solver_description</name>
+  <version>0.0.1</version>
+  <description>URDF and meshes for the Solver robot.</description>
+  <maintainer email="atwork@solver.local">atwork</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>rviz2</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
