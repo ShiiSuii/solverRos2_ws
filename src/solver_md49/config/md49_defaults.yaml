@@ -1,0 +1,13 @@
+solver_md49:
+  ros__parameters:
+    serial_port: "/dev/ttyUSB0"
+    baud_rate: 38400
+    timeout: 0.1
+
+    motor_1_accel: 5
+    motor_2_accel: 5
+    max_rpm: 255
+
+    topic_cmd_vel: "/cmd_vel_limited"
+    topic_wheel_rpm_left: "/wheel_rpm_l"
+    topic_wheel_rpm_right: "/wheel_rpm_r"

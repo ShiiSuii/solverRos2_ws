@@ -1,0 +1,6 @@
+imu_serial_node:
+  ros__parameters:
+    port: "/dev/ttyUSB1"
+    baudrate: 115200
+    frame_id: "imu_link"
+    rate_hz: 50.0

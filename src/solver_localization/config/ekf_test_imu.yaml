@@ -1,0 +1,38 @@
+ekf_localization:
+  ros__parameters:
+
+    map_frame: "map"
+    odom_frame: "odom"
+    base_link_frame: "imu_link"
+    world_frame: "odom"
+
+    frequency: 30.0
+    sensor_timeout: 0.5
+    two_d_mode: true
+    publish_tf: true
+    publish_acceleration: false
+
+    imu0: "/imu/data"
+    imu0_config: [false, false, false,
+                  true,  true,  true,
+                  false, false, false,
+                  false, false, true,
+                  false, false, false]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_queue_size: 10
+    imu0_remove_gravitational_acceleration: true
+
+    process_noise_covariance: [0.05, 0.0, 0.0, 0.0, 0.0, 0.0,
+                               0.0, 0.05, 0.0, 0.0, 0.0, 0.0,
+                               0.0, 0.0, 0.1, 0.0, 0.0, 0.0,
+                               0.0, 0.0, 0.0, 0.05, 0.0, 0.0,
+                               0.0, 0.0, 0.0, 0.0, 0.05, 0.0,
+                               0.0, 0.0, 0.0, 0.0, 0.0, 0.01]
+
+    initial_estimate_covariance: [0.001, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                  0.0, 0.001, 0.0, 0.0, 0.0, 0.0,
+                                  0.0, 0.0, 0.001, 0.0, 0.0, 0.0,
+                                  0.0, 0.0, 0.0, 0.001, 0.0, 0.0,
+                                  0.0, 0.0, 0.0, 0.0, 0.001, 0.0,
+                                  0.0, 0.0, 0.0, 0.0, 0.0, 0.001]

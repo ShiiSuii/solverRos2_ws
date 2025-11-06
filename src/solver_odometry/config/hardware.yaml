@@ -1,0 +1,8 @@
+solver_odometry:
+  ros__parameters:
+    frame_id: "odom"
+    child_frame_id: "base_link"
+    wheel_radius_m: 0.06
+    track_width_m: 0.30
+    ticks_per_rev: 980.0
+    sample_period: 0.1

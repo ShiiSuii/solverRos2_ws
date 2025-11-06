@@ -1,0 +1,13 @@
+solver_velocity_node:
+  ros__parameters:
+    wheel_radius_m: 0.075
+    track_width_m: 0.6
+    ticks_per_rev: 980.0
+    sample_period: 0.1
+
+md49_node:
+  ros__parameters:
+    wheel_radius_m: 0.075
+    track_width_m: 0.6
+    port: "/dev/ttyUSB0"
+    baudrate: 38400

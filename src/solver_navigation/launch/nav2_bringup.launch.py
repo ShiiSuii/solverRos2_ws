@@ -1,7 +1,6 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-
 def generate_launch_description():
     map_yaml = '/home/atwork/mapa_solver.yaml'
     params_file = '/home/atwork/solverRos2_ws/src/solver_navigation/config/nav2_params.yaml'
@@ -13,10 +12,10 @@ def generate_launch_description():
             executable='map_server',
             name='map_server',
             output='screen',
-            parameters=[{
-                'yaml_filename': map_yaml,
-                'use_sim_time': False,
-            }],
+            parameters=[
+                params_file,
+                {'yaml_filename': map_yaml, 'use_sim_time': False},
+            ],
         ),
 
         # AMCL
@@ -59,8 +58,7 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # BT NAVIGATOR (forzamos el BT BUENO acá)
-        # === Behavior Tree Navigator (compatible con Humble) ===
+        # BT NAVIGATOR (forzamos el BT correcto)
         Node(
             package='nav2_bt_navigator',
             executable='bt_navigator',
@@ -68,13 +66,11 @@ def generate_launch_description():
             output='screen',
             parameters=[
                 params_file,
-                # Usar el árbol clásico sin "RemovePassedGoals"
                 {'default_bt_xml_filename': '/opt/ros/humble/share/nav2_bt_navigator/behavior_trees/navigate_w_recovery.xml'}
             ],
         ),
 
-
-        # LIFECYCLE
+        # LIFECYCLE MANAGER
         Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',
