@@ -39,12 +39,22 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
+        # --- TF: base_link -> laser ---
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_tf_laser',
             output='screen',
             arguments=['0.22', '0.0', '0.0', '0.0', '0.0', '0.0', 'base_link', 'laser'],
+        ),
+
+        # --- TF: base_link -> camera_link ---
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_tf_camera',
+            output='screen',
+            arguments=['0.10', '0.0', '1.00', '0.0', '0.0', '0.0', 'base_link', 'camera_link'],
         ),
 
         # --- Nodo de fusión EKF ---

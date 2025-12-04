@@ -1,37 +1,38 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
+import os
 
 def generate_launch_description():
+
+    config_dir = '/home/atwork/solverRos2_ws/src/solver_navigation/config'
     map_yaml = '/home/atwork/mapa_solver.yaml'
-    params_file = '/home/atwork/solverRos2_ws/src/solver_navigation/config/nav2_params.yaml'
+    params_file = os.path.join(config_dir, 'nav2_params.yaml')
+    bt_xml = os.path.join(config_dir, 'bt_trees', 'solver_bt.xml')
 
     return LaunchDescription([
-        # MAP SERVER
+        # === MAP SERVER ===
         Node(
             package='nav2_map_server',
             executable='map_server',
             name='map_server',
             output='screen',
-            parameters=[
-                params_file,
-                {'yaml_filename': map_yaml, 'use_sim_time': False},
-            ],
+            parameters=[{
+                'yaml_filename': map_yaml,
+                'use_sim_time': False
+            }],
         ),
 
-        # AMCL
+        # === AMCL ===
         Node(
             package='nav2_amcl',
             executable='amcl',
             name='amcl',
             output='screen',
             parameters=[params_file],
-            remappings=[
-                ('/odom', '/odometry/filtered'),
-                ('/scan', '/scan'),
-            ],
+            remappings=[('scan', '/scan')],
         ),
 
-        # PLANNER
+        # === PLANNER SERVER ===
         Node(
             package='nav2_planner',
             executable='planner_server',
@@ -40,7 +41,7 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # CONTROLLER
+        # === CONTROLLER SERVER ===
         Node(
             package='nav2_controller',
             executable='controller_server',
@@ -49,7 +50,7 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # BEHAVIORS
+        # === BEHAVIOR SERVER ===
         Node(
             package='nav2_behaviors',
             executable='behavior_server',
@@ -58,19 +59,16 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # BT NAVIGATOR (forzamos el BT correcto)
+        # === BT NAVIGATOR ===
         Node(
             package='nav2_bt_navigator',
             executable='bt_navigator',
             name='bt_navigator',
             output='screen',
-            parameters=[
-                params_file,
-                {'default_bt_xml_filename': '/opt/ros/humble/share/nav2_bt_navigator/behavior_trees/navigate_w_recovery.xml'}
-            ],
+            parameters=[params_file],
         ),
 
-        # LIFECYCLE MANAGER
+        # === LIFECYCLE MANAGER ===
         Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',
@@ -79,13 +77,14 @@ def generate_launch_description():
             parameters=[{
                 'use_sim_time': False,
                 'autostart': True,
+                'bond_timeout': 5.0,
                 'node_names': [
                     'map_server',
                     'amcl',
                     'planner_server',
                     'controller_server',
                     'behavior_server',
-                    'bt_navigator',
+                    'bt_navigator'
                 ]
             }],
         ),
