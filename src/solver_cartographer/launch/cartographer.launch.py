@@ -11,7 +11,7 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': False}],
             arguments=[
-                '-configuration_directory', '/home/atwork/solverRos2_ws/src/solver_cartographer/config',
+                '-configuration_directory', '/home/athome/solverRos2_ws/src/solver_cartographer/config',
                 '-configuration_basename', 'solver.lua'
             ],
             remappings=[

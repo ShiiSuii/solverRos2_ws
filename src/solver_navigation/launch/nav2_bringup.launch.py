@@ -4,8 +4,8 @@ import os
 
 def generate_launch_description():
 
-    config_dir = '/home/atwork/solverRos2_ws/src/solver_navigation/config'
-    map_yaml = '/home/atwork/mapa_solver.yaml'
+    config_dir = '/home/athome/solverRos2_ws/src/solver_navigation/config'
+    map_yaml = '/home/athome/mapa_solver.yaml'
     params_file = os.path.join(config_dir, 'nav2_params.yaml')
     bt_xml = os.path.join(config_dir, 'bt_trees', 'solver_bt.xml')
 

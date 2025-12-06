@@ -1,0 +1,25 @@
+teleop_twist_joy_node:
+  ros__parameters:
+
+    # -----------------------------
+    #  Stick izquierdo (igual que antes)
+    # -----------------------------
+    axis_linear:
+      x: 1         # Stick izquierdo vertical
+    scale_linear:
+      x: 0.5       # Velocidad normal
+    scale_linear_turbo:
+      x: 1.0       # Turbo con R2
+
+    axis_angular:
+      yaw: 0       # Stick izquierdo horizontal
+    scale_angular:
+      yaw: 1.0
+
+    # -----------------------------
+    # Botones
+    # -----------------------------
+    enable_button: 5           # R1  (deadman)
+    enable_turbo_button: 7     # R2  (turbo)
+
+    require_enable_button: true

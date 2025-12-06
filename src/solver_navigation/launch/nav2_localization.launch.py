@@ -5,8 +5,8 @@ import os
 
 def generate_launch_description():
     nav2_bringup_dir = '/opt/ros/humble/share/nav2_bringup/launch'
-    map_file = '/home/atwork/mapa_solver.yaml'
-    params_file = '/home/atwork/solverRos2_ws/src/solver_navigation/config/nav2_params.yaml'
+    map_file = '/home/athome/mapa_solver.yaml'
+    params_file = '/home/athome/solverRos2_ws/src/solver_navigation/config/nav2_params.yaml'
 
     return LaunchDescription([
         IncludeLaunchDescription(
