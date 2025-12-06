@@ -1,0 +1,24 @@
+urg_node:
+  ros__parameters:
+    ip_address: "192.168.0.10"
+    ip_port: 10940       
+    serial_port: ""
+
+    frame_id : "laser"
+    calibrate_time : false
+    default_user_latency: 0.0
+    publish_intensity : false
+    publish_multiecho : false
+    publishing_frequency: 40.0   # 40 Hz
+
+
+    error_limit : 4
+    error_reset_period : 5.0
+    diagnostics_tolerance : 0.05
+    diagnostics_window_time : 5.0
+    time_offset : 0.0
+    angle_min : -1.16
+    angle_max : 1.16
+    skip : 0
+    cluster : 1
+
