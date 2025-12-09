@@ -15,5 +15,3 @@ __pycache__/
 *.pgm
 *.db
 
-# RViz and launch logs
-*.rviz
