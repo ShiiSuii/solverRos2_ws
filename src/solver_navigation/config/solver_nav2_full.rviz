@@ -1,0 +1,161 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /TF1
+        - /Map1
+        - /LaserScan1
+        - /GlobalCostmap1
+        - /LocalCostmap1
+        - /AMCL Pose1
+        - /AMCL Particles1
+        - /Global Path1
+        - /Local Path1
+        - /Footprint1
+      Splitter Ratio: 0.5
+
+Visualization Manager:
+  Class: ""
+  Enabled: true
+
+  Global Options:
+    Background Color: 0; 0; 0
+    Fixed Frame: map
+    Frame Rate: 30
+
+  Displays:
+
+    ###########################################
+    # TF TREE
+    ###########################################
+    - Name: TF
+      Class: rviz_default_plugins/TF
+      Enabled: true
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Marker Scale: 0.2
+
+    ###########################################
+    # MAP
+    ###########################################
+    - Name: Map
+      Class: rviz_default_plugins/Map
+      Enabled: true
+      Topic: /map
+      Alpha: 0.8
+      Color Scheme: map
+      Draw Behind: false
+
+    ###########################################
+    # GLOBAL COSTMAP
+    ###########################################
+    - Name: GlobalCostmap
+      Class: rviz_default_plugins/Map
+      Enabled: true
+      Topic: /global_costmap/costmap
+      Alpha: 0.5
+      Color Scheme: costmap
+      Draw Behind: true
+
+    # OPTIONAL UPDATE LAYER
+    - Name: GlobalCostmapUpdates
+      Class: rviz_default_plugins/Map
+      Enabled: true
+      Topic: /global_costmap/costmap_updates
+      Alpha: 0.4
+      Color Scheme: costmap
+      Draw Behind: true
+
+    ###########################################
+    # LOCAL COSTMAP
+    ###########################################
+    - Name: LocalCostmap
+      Class: rviz_default_plugins/Map
+      Enabled: true
+      Topic: /local_costmap/costmap
+      Alpha: 0.5
+      Color Scheme: costmap
+      Draw Behind: true
+
+    ###########################################
+    # LASER SCAN
+    ###########################################
+    - Name: LaserScan
+      Class: rviz_default_plugins/LaserScan
+      Enabled: true
+      Topic: /scan
+      Color: 1; 0; 0
+      Size: 0.05
+      Style: Flat Squares
+
+    ###########################################
+    # AMCL – POSE
+    ###########################################
+    - Name: AMCL Pose
+      Class: rviz_default_plugins/PoseWithCovariance
+      Enabled: true
+      Topic: /amcl_pose
+      Shape: Arrow
+      Color: 0; 1; 0
+      Shaft Length: 0.3
+      Shaft Diameter: 0.05
+
+    ###########################################
+    # PARTICLE CLOUD – AMCL
+    ###########################################
+    - Name: AMCL Particles
+      Class: rviz_default_plugins/PointCloud2
+      Enabled: true
+      Topic: /particle_cloud
+      Size (Pixels): 3
+      Color Transformer: FlatColor
+      Flat Color: 0.0; 1.0; 0.0
+
+    ###########################################
+    # GLOBAL PATH
+    ###########################################
+    - Name: Global Path
+      Class: rviz_default_plugins/Path
+      Enabled: true
+      Topic: /plan
+      Color: 0; 0; 1
+      Line Width: 0.05
+
+    ###########################################
+    # LOCAL PATH
+    ###########################################
+    - Name: Local Path
+      Class: rviz_default_plugins/Path
+      Enabled: true
+      Topic: /local_plan
+      Color: 1; 0; 0
+      Line Width: 0.05
+
+    ###########################################
+    # FOOTPRINT POLYGON
+    ###########################################
+    - Name: Footprint
+      Class: rviz_default_plugins/Polygon
+      Enabled: true
+      Topic: /local_costmap/published_footprint
+      Color: 1; 1; 0
+      Alpha: 0.8
+      Line Width: 0.03
+
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/SetGoal
+      Topic: /goal_pose
+    - Class: rviz_default_plugins/SetInitialPose
+      Topic: /initialpose
+
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 6
+      Pitch: 0.5
+      Yaw: 0.5
+      Target Frame: map

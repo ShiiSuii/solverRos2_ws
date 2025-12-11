@@ -2,20 +2,25 @@
 <package format="3">
   <name>solver_navigation</name>
   <version>0.0.1</version>
-  <description>Navigation stack with A* + TEB for Solver robot</description>
+  <description>Navigation stack with Nav2 for Solver robot</description>
+
   <maintainer email="atwork@example.com">atwork</maintainer>
   <license>MIT</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <!-- Este es el buildtool correcto para Python -->
+  <buildtool_depend>ament_python</buildtool_depend>
 
+  <!-- Dependencias en tiempo de ejecución -->
   <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>nav2_planner</exec_depend>
   <exec_depend>nav2_controller</exec_depend>
   <exec_depend>nav2_amcl</exec_depend>
   <exec_depend>nav2_map_server</exec_depend>
   <exec_depend>nav2_lifecycle_manager</exec_depend>
+  <exec_depend>rclpy</exec_depend>
 
   <export>
-    <build_type>ament_cmake</build_type>
+    <!-- MCU: USAR AMENT_PYTHON -->
+    <build_type>ament_python</build_type>
   </export>
 </package>

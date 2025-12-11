@@ -1,16 +1,34 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.actions import TimerAction
 import os
+
 
 def generate_launch_description():
 
-    config_dir = '/home/athome/solverRos2_ws/src/solver_navigation/config'
-    map_yaml = '/home/athome/mapa_solver.yaml'
+    # Paths
+    pkg_dir = '/home/athome/solverRos2_ws/src/solver_navigation'
+    config_dir = os.path.join(pkg_dir, 'config')
+
     params_file = os.path.join(config_dir, 'nav2_params.yaml')
+    rviz_config = os.path.join(config_dir, 'solver_nav2_full.rviz')
+    map_yaml = '/home/athome/mapa_solver.yaml'
 
-    return LaunchDescription([
+    # ========================
+    # RVIZ FIRST
+    # ========================
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config],
+    )
 
-        # === MAP SERVER ===
+    # ========================
+    # NAV2 STACK
+    # ========================
+    nav2_nodes = [
         Node(
             package='nav2_map_server',
             executable='map_server',
@@ -22,7 +40,6 @@ def generate_launch_description():
             }],
         ),
 
-        # === AMCL ===
         Node(
             package='nav2_amcl',
             executable='amcl',
@@ -32,7 +49,6 @@ def generate_launch_description():
             remappings=[('scan', '/scan')],
         ),
 
-        # === PLANNER SERVER ===
         Node(
             package='nav2_planner',
             executable='planner_server',
@@ -41,7 +57,6 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # === CONTROLLER SERVER ===
         Node(
             package='nav2_controller',
             executable='controller_server',
@@ -50,7 +65,6 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # === BEHAVIOR SERVER ===
         Node(
             package='nav2_behaviors',
             executable='behavior_server',
@@ -59,7 +73,6 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # === BT NAVIGATOR ===
         Node(
             package='nav2_bt_navigator',
             executable='bt_navigator',
@@ -68,7 +81,6 @@ def generate_launch_description():
             parameters=[params_file],
         ),
 
-        # === LIFECYCLE MANAGER ===
         Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',
@@ -88,4 +100,15 @@ def generate_launch_description():
                 ]
             }],
         ),
+    ]
+
+    # Launch Nav2 AFTER RViz
+    delayed_nav2 = TimerAction(
+        period=0.5,
+        actions=nav2_nodes
+    )
+
+    return LaunchDescription([
+        rviz,
+        delayed_nav2
     ])
